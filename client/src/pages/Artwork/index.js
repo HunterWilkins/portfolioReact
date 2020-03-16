@@ -11,7 +11,7 @@ class Artwork extends Component {
     }
 
     componentDidMount = () => {
-        axios.get("/api/artwork").then(function(data){
+        axios.get(process.env.PORT + "/api/artwork").then(function(data){
             console.log(data);
         }).catch(function(err) {
             console.log(err);
