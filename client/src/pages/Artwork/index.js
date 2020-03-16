@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import "./style.css";
 
+const axios = require("axios");
+
 
 class Artwork extends Component {
     state = {
@@ -9,18 +11,9 @@ class Artwork extends Component {
     }
 
     componentDidMount = () => {
-        fetch("/api/artwork", {
-            method: "GET"
-        }).then(response => {
-            console.log(response);
-            return response.json();
-        }).then(artwork => {
-            console.log(artwork);
-            this.setState({
-                images: artwork.thumbnails,
-                source: artwork.source
-            });
-        });
+        axios.get("/api/artwork", function(data){
+            console.log(data);
+        })
     }
 
     render() {

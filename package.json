@@ -11,7 +11,7 @@
     "install": "cd client && npm install",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
-    "heroku-postbuild" : "npm install"
+    "heroku-postbuild": "npm install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/HunterWilkins/portfolioReact#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "concurrently": "^5.1.0",
     "create-react-app": "^3.4.0",
     "express": "^4.17.1",
