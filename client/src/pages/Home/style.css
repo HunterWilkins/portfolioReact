@@ -1,0 +1,112 @@
+:root {
+    --padding: 5px;
+    --footerHeight: 30px;
+    --asideWidth: 90px;
+    --text-color: rgb(231, 231, 231);
+    --layer0 : rgb(45,45,45);
+    --layer1: rgb(54,54,54);
+    --layer2: rgb(100, 100, 100);
+    --highlight: rgb(231,231,231);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+body {
+    background: var(--layer0);
+    color: var(--text-color);
+}
+
+main, aside, footer {
+    position: fixed;
+}
+
+main, aside {
+    top: 0;
+    bottom: var(--footerHeight);
+}
+
+main {
+    left: var(--asideWidth);
+    padding: var(--padding);
+}
+
+aside {
+    left: 0;
+    width: var(--asideWidth);
+    background: var(--layer1);
+    border-right: var(--highlight) solid 2px;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+aside a {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: var(--padding);
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align:center;
+}
+
+.active-tab {
+    background: var(--layer2);
+}
+
+/* PREFAB POSITIONING CLASSES */
+.top, .right, .bottom, .left, .center-y, .center-x, .center {
+    position: absolute
+}
+
+.top {
+    top: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.center-y {
+    transform: translateY(-50%);
+    bottom: 50%;
+}
+
+.center-x {
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.center {
+    transform: translate(-50%, -50%);
+    bottom: 50%;
+    left: 50%;
+}
