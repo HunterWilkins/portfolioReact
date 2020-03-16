@@ -11,6 +11,10 @@ app.use(express.static("public"));
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
+    app.get("*", function(req, res) {
+        console.log("Routing");
+        res.sendFile(path.join(__dirname, "/client/build", "index.html"));  
+    });
 }
 
 
@@ -35,13 +39,6 @@ app.get("/api/artwork", function(req, res) {
         }
     });
 });
-
-
-app.get("*", function(req, res) {
-    console.log("Routing");
-    res.sendFile(path.join(__dirname, "/client/build", "index.html"));  
-});
-
 
 
 app.listen(PORT, function() {
