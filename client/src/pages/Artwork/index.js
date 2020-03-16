@@ -13,6 +13,7 @@ class Artwork extends Component {
             method: "GET"
         }).then(response => {
             console.log(response);
+            console.log(response.json());
             return response.json();
         }).then(artwork => {
             console.log(artwork);
