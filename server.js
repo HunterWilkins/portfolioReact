@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/api/artwork", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
-    const publicPath = path.resolve(__dirname, "images");
+    const publicPath = path.resolve(__dirname, "images/thumbnails");
     fs.readdir(publicPath, function(err, files) {
         if (err) {
             console.log(err);
