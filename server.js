@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/api/artwork", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
-    const publicPath = "/images/thumbnails";
+    const publicPath = "/";
     fs.readdirSync(publicPath, function(err, files) {
         if (err) {
             console.log(err);
@@ -30,6 +30,7 @@ app.get("/api/artwork", function(req, res) {
             };
 
             console.log("Successfully Reading Files");
+            console.log(files);
             
             res.json(results);    
         }
