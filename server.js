@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/api/artwork", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
-    const publicPath = "/client/build";
+    const publicPath = __dirname;
     fs.readdirSync(publicPath, function(err, files) {
         if (err) {
             console.log(err);
