@@ -16,8 +16,8 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/api/artwork", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
-    const publicPath = "%PUBLIC_URL%";
-    fs.readdirSync(publicPath, function(err, files) {
+    const publicPath = path.resolve(__dirname, "images");
+    fs.readdir(publicPath, function(err, files) {
         if (err) {
             console.log(err);
             res.send("Something went BAAAAAAAAAD!");
@@ -38,7 +38,6 @@ app.get("/api/artwork", function(req, res) {
 });
 
 app.get("*", function(req, res) {
-    console.log("Routing");
     res.sendFile(path.join(__dirname, "/client/build", "index.html"));  
 });
 
