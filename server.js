@@ -19,8 +19,8 @@ app.get("/api/artwork", function(req, res) {
     const publicPath = path.join(__dirname, "/client/images/thumbnails");
     fs.readdirSync(publicPath, function(err, files) {
         if (err) {
-            console.group(err);
-            res.sendStatus(500);
+            console.log(err);
+            res.send("Something went BAAAAAAAAAD!");
         }
     
         else {
