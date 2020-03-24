@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/HunterWilkins/portfolioReact/issues"
   },
-  "homepage": "https://github.com/HunterWilkins/portfolioReact#readme",
+  "homepage": ".",
   "dependencies": {
     "axios": "^0.19.2",
     "concurrently": "^5.1.0",

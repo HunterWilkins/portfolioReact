@@ -22,6 +22,7 @@ app.get("/api/artwork", function(req, res) {
     const publicPath3 = path.resolve(__dirname, "/client/build/public/images/thumbails");
 
     console.log(__dirname);
+    console.log(path.resolve(__dirname, "/build/images/thumbnails"));
 
 
         fs.readdir(path.resolve(__dirname, "/build/images/thumbnails"), function(err, files) {
