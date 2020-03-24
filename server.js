@@ -33,6 +33,7 @@ app.get("/api/artwork", function(req, res) {
         
             else {
                 console.log("FINALLY READING THE FILES");
+                console.log(files);
             }
         });
  
