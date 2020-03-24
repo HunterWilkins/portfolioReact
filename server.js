@@ -20,35 +20,23 @@ app.get("/api/artwork", function(req, res) {
     const publicPath1 = path.resolve(__dirname, "/images/thumbnails");
     const publicPath2= path.resolve(__dirname, "/client/build/images/thumbnails");
     const publicPath3 = path.resolve(__dirname, "/client/build/public/images/thumbails");
-    let finallyFreakingFoundSomething = false;
 
-    let criteria = [
-        publicPath, publicPath1, publicPath2, publicPath3
-    ];
+    console.log(__dirname);
 
-    criteria.forEach(item => {
 
-        fs.readdir(item, function(err, files) {
+        fs.readdir(path.resolve(__dirname, "/images/thumbnails"), function(err, files) {
             if (err) {
                 console.log(err);
                 console.log("SOMETHING WENT WRONG")
             }
         
             else {
-
                 console.log("FINALLY READING THE FREAKIN' FILES");
-                finallyFreakingFoundSomething = true;
             }
         });
-    });
+ 
 
-    if (finallyFreakingFoundSomething === true) {
-        res.send("FOUND SOMETHING! WOOOOO");
-    }
-
-    else {
-        res.send("BACK TO THE GRIND");
-    }
+    res.send("Check the Logs");
 });
 
 app.get("*", function(req, res) {
