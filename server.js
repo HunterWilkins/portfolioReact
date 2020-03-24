@@ -25,20 +25,21 @@ app.get("/api/artwork", function(req, res) {
     console.log(path.resolve(__dirname, "/build/images/thumbnails"));
 
 
-        fs.readdir(path.join(__dirname, "/client"), function(err, files) {
+        fs.readdir(path.join(__dirname, "/client/public/images/thumbnails"), function(err, files) {
             if (err) {
                 console.log(err);
                 console.log("SOMETHING WENT WRONG")
+                res.send("Check the Logs");
             }
         
             else {
                 console.log("FINALLY READING THE FILES");
                 console.log(files);
+                res.send(files);
             }
         });
  
 
-    res.send("Check the Logs");
 });
 
 app.get("*", function(req, res) {
