@@ -7,7 +7,7 @@ const axios = require("axios");
 class Artwork extends Component {
     state = {
         fullscreen : false,
-        images: []
+        images: ["test", "test", "test"]
     }
 
     componentDidMount = () => {
