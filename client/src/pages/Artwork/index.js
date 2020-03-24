@@ -13,6 +13,9 @@ class Artwork extends Component {
     componentDidMount = () => {
         axios.get("/api/artwork").then(function(data){
             console.log(data);
+            this.setState({
+                images: data
+            });
         }).catch(function(err) {
             console.log(err);
         })
