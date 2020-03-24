@@ -25,7 +25,7 @@ app.get("/api/artwork", function(req, res) {
     console.log(path.resolve(__dirname, "/build/images/thumbnails"));
 
 
-        fs.readdir("app/build/images/thumbnails", function(err, files) {
+        fs.readdir("/images/thumbnails", function(err, files) {
             if (err) {
                 console.log(err);
                 console.log("SOMETHING WENT WRONG")
