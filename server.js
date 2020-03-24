@@ -24,14 +24,14 @@ app.get("/api/artwork", function(req, res) {
     console.log(__dirname);
 
 
-        fs.readdir(path.resolve(__dirname, "/images/thumbnails"), function(err, files) {
+        fs.readdir(path.resolve(__dirname, "/build/images/thumbnails"), function(err, files) {
             if (err) {
                 console.log(err);
                 console.log("SOMETHING WENT WRONG")
             }
         
             else {
-                console.log("FINALLY READING THE FREAKIN' FILES");
+                console.log("FINALLY READING THE FILES");
             }
         });
  
