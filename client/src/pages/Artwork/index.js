@@ -10,6 +10,10 @@ class Artwork extends Component {
         images: []
     }
 
+    constructor() {
+        this.getArt = this.getArt.bind(this);
+    }
+
     componentDidMount = () => {
         this.getArt();
     }
