@@ -5,15 +5,41 @@ import {Link} from "react-router-dom";
 import Artwork from "../Artwork/index";
 import Code from "../Code/index";
 
+const axios = require("axios");
+
+
 class Home extends Component {
-    state = {
-        page : window.location.pathname.split("/")[1]
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            page : window.location.pathname.split("/")[1],
+            artwork: []
+        }
+    }
+
+    componentDidMount = () => {
+        console.log(this.state);
+        this.getArt();
     }
 
     route = (destination) => {
         console.log(destination);
         this.setState({
             page: destination
+        });
+    }
+
+
+    getArt = () => {
+        axios.get("/api/artwork").then((response) => {
+            console.log(response);
+            this.setState({
+                artwork: response.data
+            })
+        }).catch(function(err) {
+            console.log(err);
         });
     }
 
@@ -26,7 +52,7 @@ class Home extends Component {
                 currentPage = <About />
                 break;
             case "artwork":
-                currentPage = <Artwork />
+                currentPage = <Artwork artwork = {this.state.artwork}/>
                 break;
             case "code":
                 currentPage = <Code />

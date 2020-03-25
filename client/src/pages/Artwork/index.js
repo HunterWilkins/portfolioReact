@@ -4,44 +4,25 @@ import "./style.css";
 const axios = require("axios");
 
 
-class Artwork extends Component {
-    state = {
-        fullscreen : false,
-        images: []
-    }
+function Artwork(props) {
 
-    artNames = [];
-
-    componentDidMount = () => {
-        console.log(this.state);
-        axios.get("/api/artwork").then(function(data){
-            console.log(data);
-            console.log(this.state);
-            artNames = data;
-        }).catch(function(err) {
-            console.log(err);
-        });
-        console.log(artNames);
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Artwork</h1>
-                <div id = "gallery">
-                    {this.state.images.map(image => {
-                        let name = image.replace(/=|-Thumbnail|.jpg|.png/g, " ");
-                        return (
-                            <div className = "thumbnail">
-                                <img src = {"/images/thumbnails/" + image + ""} alt = {"" + name + ""}></img>
-                                <p className = "bottom">{name}</p>
-                            </div>
-                        )
-                    })}
-                </div>
+    return (
+        <div>
+            <h1>Artwork</h1>
+            <div id = "gallery">
+                {props.artwork.map(image => {
+                    let name = image.replace(/=|-Thumbnail|.jpg|.png/g, " ");
+                    return (
+                        <div className = "thumbnail">
+                            <img src = {"/images/thumbnails/" + image + ""} alt = {"" + name + ""}></img>
+                            <p className = "bottom">{name}</p>
+                        </div>
+                    )
+                })}
             </div>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default Artwork;
