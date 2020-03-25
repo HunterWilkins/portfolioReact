@@ -21,7 +21,7 @@ class Artwork extends Component {
             }).catch(function(err) {
                 console.log(err);
             });
-        let {data} = res.data;
+        let {data} = response.data;
         this.setState({images: data});
     }
 
