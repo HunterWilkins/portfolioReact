@@ -10,24 +10,18 @@ class Artwork extends Component {
         images: []
     }
 
+    artNames = [];
 
     componentDidMount = () => {
-        let newImages = ["test", "test", "test"];
         console.log(this.state);
-        this.setState({
-            images: newImages
+        axios.get("/api/artwork").then(function(data){
+            console.log(data);
+            console.log(this.state);
+            artNames = data;
+        }).catch(function(err) {
+            console.log(err);
         });
-    }
-
-    getArt = async () => {
-        let response = await axios.get("/api/artwork").then(function(data){
-                console.log(data);
-                console.log(this.state);
-            }).catch(function(err) {
-                console.log(err);
-            });
-        let {data} = response.data;
-        this.setState({images: data});
+        console.log(artNames);
     }
 
     render() {
