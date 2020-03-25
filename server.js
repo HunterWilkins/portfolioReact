@@ -14,30 +14,32 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.get("/api/artwork", function(req, res) {
+app.get("/api/artwork/:genre", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
-    const publicPath = path.resolve(__dirname, "images/thumbnails");
-    const publicPath1 = path.resolve(__dirname, "/images/thumbnails");
-    const publicPath2= path.resolve(__dirname, "/client/build/images/thumbnails");
-    const publicPath3 = path.resolve(__dirname, "/client/build/public/images/thumbails");
+   
+    if (req.params.genre === "all") {
+        let allGenres = [
+            "Concept", "Hostage Situation", "Miscellaneous", "Romance"
+        ];
 
-    console.log(__dirname);
-    console.log(path.resolve(__dirname, "/build/images/thumbnails"));
+        let artNames = [
+            
+        ];
 
-
-        fs.readdir(path.join(__dirname, "/client/public/images/thumbnails"), function(err, files) {
-            if (err) {
-                console.log(err);
-                console.log("SOMETHING WENT WRONG")
-                res.send("Check the Logs");
-            }
-        
-            else {
-                console.log("FINALLY READING THE FILES");
-                console.log(files);
-                res.send(files);
-            }
+        allGenres.forEach(item => {
+            console.log(fs.readdirSync(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails")));
+             
+            artNames.push({
+                name: item,
+                array: fs.readdirSync(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"))
+            });
+           
         });
+
+        res.send(artNames);
+
+
+    }
  
 
 });

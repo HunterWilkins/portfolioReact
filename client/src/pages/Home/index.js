@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./style.css";
 import About from "../../components/About/index";
 import {Link} from "react-router-dom";
-import Artwork from "../Artwork/index";
+import Artwork from "../../components/Artwork/index";
 import Code from "../Code/index";
 
 const axios = require("axios");
@@ -15,9 +15,12 @@ class Home extends Component {
 
         this.state = {
             page : window.location.pathname.split("/")[1],
-            artwork: []
+            artwork: [],
+            artGenre: "all"
         }
     }
+
+
 
     componentDidMount = () => {
         console.log(this.state);
@@ -33,7 +36,7 @@ class Home extends Component {
 
 
     getArt = () => {
-        axios.get("/api/artwork").then((response) => {
+        axios.get("/api/artwork/all").then((response) => {
             console.log(response);
             this.setState({
                 artwork: response.data
@@ -52,7 +55,7 @@ class Home extends Component {
                 currentPage = <About />
                 break;
             case "artwork":
-                currentPage = <Artwork artwork = {this.state.artwork}/>
+                currentPage = <Artwork genre = {this.state.artGenre} artwork = {this.state.artwork}/>
                 break;
             case "code":
                 currentPage = <Code />
