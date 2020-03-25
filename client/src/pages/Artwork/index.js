@@ -14,16 +14,15 @@ class Artwork extends Component {
         this.getArt();
     }
 
-    getArt = () => {
-        return axios.get("/api/artwork").then(function(data){
-            console.log(data);
-            console.log(this.state);
-            this.setState({
-                images: data
+    getArt = async () => {
+        let response = await axios.get("/api/artwork").then(function(data){
+                console.log(data);
+                console.log(this.state);
+            }).catch(function(err) {
+                console.log(err);
             });
-        }).catch(function(err) {
-            console.log(err);
-        })
+        let {data} = res.data;
+        this.setState({images: data});
     }
 
     render() {
