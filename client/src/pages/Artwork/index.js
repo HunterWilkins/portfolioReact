@@ -7,11 +7,7 @@ const axios = require("axios");
 class Artwork extends Component {
     state = {
         fullscreen : false,
-        images: axios.get("/api/artwork").then(function(data){
-            console.log(data);
-            console.log(this.state);
-            return data
-        })
+        images: []
     }
 
     componentDidMount = () => {
