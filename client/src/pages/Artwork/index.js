@@ -11,7 +11,11 @@ class Artwork extends Component {
     }
 
     componentDidMount = () => {
-        axios.get("/api/artwork").then(function(data){
+        this.getArt();
+    }
+
+    getArt = () => {
+        return axios.get("/api/artwork").then(function(data){
             console.log(data);
             console.log(this.state);
             this.setState({
