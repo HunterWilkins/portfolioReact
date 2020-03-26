@@ -68,8 +68,9 @@
 .thumbnail p {
     position: absolute;
     bottom: -100%;
-    background: rgba(0, 0, 0, 0.644);
+    background: var(--layer0);
     padding: 5px;
+    color: var(--text-color);
     overflow-x: hidden;
     overflow-y: hidden;
     text-overflow: ellipsis;

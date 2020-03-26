@@ -2,15 +2,20 @@
     --padding: 5px;
     --footerHeight: 30px;
     --asideWidth: 90px;
-    --text-color: rgb(231, 231, 231);
-    --layer0 : rgb(45,45,45);
-    --layer1: rgb(54,54,54);
-    --layer2: rgb(100, 100, 100);
-    --highlight: rgb(231,231,231);
+    --text-color: rgb(230,230,230);
+    --shade: rgb(17,15,15);
+    --layer0 : rgb(31,24,24);
+    --layer1: rgb(56,49,47);
+    --layer2: rgb(97,88,82);
+    --highlight: rgb(231,215,180);
 }
 
 * {
     box-sizing: border-box;
+}
+
+em {
+    font-style: italic;
 }
 
 h1 {
@@ -25,9 +30,15 @@ h3 {
     font-size: 20px;
 }
 
+ul {
+    list-style-type: circle;
+    list-style-position:inside;
+}
+
 body {
     background: var(--layer0);
     color: var(--text-color);
+    font-family: sans-serif;
 }
 
 main, aside, footer {
@@ -40,6 +51,7 @@ main, aside {
 }
 
 main {
+    z-index:10;
     left: var(--asideWidth);
     right: 0;
     padding: var(--padding);
@@ -69,10 +81,47 @@ footer {
     left: 0;
     width: 100%;
     text-align:center;
+    z-index:0;
+}
+
+footer .center {
+    position: relative;
+    z-index: 0;
 }
 
 .active-tab {
     background: var(--layer2);
+}
+
+#themes-button {
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: 30px;
+    left: 50%;
+}
+
+input[type=checkbox] {
+    display:block;
+    opacity:0;
+    position: absolute;
+    width:0;
+}
+
+.check-button {
+    cursor: pointer;
+    display: block;
+    color: var(--highlight);
+    background: var(--layer0);
+    padding: 8px 12px;
+    transition: .15s;
+    border: var(--highlight) solid 2px;
+    border-radius: 18px;
+    box-shadow: -3px 3px var(--highlight);
+}
+
+input[type=checkbox]:checked +.check-button {
+    background: var(--layer2);
+    color: white;
 }
 
 /* PREFAB POSITIONING CLASSES */

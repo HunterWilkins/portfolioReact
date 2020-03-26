@@ -1,0 +1,75 @@
+#about {
+    padding: var(--padding);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+#logo {
+    padding: 5px;
+}
+
+#bio {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    text-align:center;
+    background: var(--shade);
+}
+
+#bio article {
+    display: inline-block;
+    max-width: 500px;
+    text-align:left;
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 1.25em;
+}
+
+#bio article ul {
+    padding-left: 15px;
+}
+
+#portrait {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    text-align:left;
+    overflow: hidden;
+    margin-right: 15px;
+    width: 300px;
+    height: 300px;
+    border: solid var(--highlight) 4px;
+}
+
+#portrait img {
+    position: absolute;
+    transform: translateX(-10%);
+    max-width: 125%;
+    max-height: 125%;
+}
+
+#tabs {
+    text-align:center;
+    width: 100%;
+}
+
+#tabs a {
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px;
+    width: 30%;
+    border-bottom: var(--text-color) dashed 1px;
+    border-top: var(--text-color) dashed 1px;
+    transition: .15s;
+}
+
+#tabs a:hover {
+    color: var(--highlight);
+    /* text-shadow: 0 0 5px var(--highlight); */
+    border-color: var(--highlight);
+}
