@@ -16,11 +16,11 @@ class Home extends Component {
         this.state = {
             page : window.location.pathname.split("/")[1],
             artwork: [],
-            artGenre: "all"
+            artGenre: "all",
+            image: "",
+            fullscreen: false
         }
     }
-
-
 
     componentDidMount = () => {
         console.log(this.state);
@@ -36,13 +36,26 @@ class Home extends Component {
 
 
     getArt = () => {
-        axios.get("/api/artwork/all").then((response) => {
+        axios.post("/api/artwork", {genre: "all", fileName: ""}).then((response) => {
             console.log(response);
             this.setState({
                 artwork: response.data
             })
         }).catch(function(err) {
             console.log(err);
+        });
+    }
+
+    fullScreen = (imageName, display) => {
+        this.setState({
+            fullscreen: display,
+            image: imageName
+        });
+    }
+
+    renameArt = () => {
+        axios.get("/api/rename/equals", (response) => {
+            console.log(response)
         });
     }
 
@@ -55,7 +68,12 @@ class Home extends Component {
                 currentPage = <About />
                 break;
             case "artwork":
-                currentPage = <Artwork genre = {this.state.artGenre} artwork = {this.state.artwork}/>
+                currentPage = <Artwork fullscreen = {this.state.fullscreen} 
+                                image = {this.state.image} 
+                                genre = {this.state.artGenre} 
+                                artwork = {this.state.artwork}
+                                showFullScreen = {this.fullScreen}
+                                />
                 break;
             case "code":
                 currentPage = <Code />
@@ -71,6 +89,8 @@ class Home extends Component {
                             <Link to = {"/" + item.toLowerCase()} className = {this.state.page === item.toLowerCase() ? "active-tab" : ""} onClick = {() => {this.route(item.toLowerCase())}}>{item}</Link>
                         )    
                     })}
+
+                    <button onClick = {this.renameArt}>Rename</button>
 
                 </aside>
                 

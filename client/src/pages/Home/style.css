@@ -41,6 +41,7 @@ main, aside {
 
 main {
     left: var(--asideWidth);
+    right: 0;
     padding: var(--padding);
 }
 
