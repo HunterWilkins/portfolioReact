@@ -90,7 +90,7 @@ class Home extends Component {
                         )    
                     })}
 
-                    <button onClick = {this.renameArt}>Rename</button>
+                    {/* <button onClick = {this.renameArt}>Rename</button> */}
 
                 </aside>
                 
