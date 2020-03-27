@@ -1,13 +1,17 @@
 :root {
     --padding: 5px;
     --footerHeight: 30px;
+    --navHeight: 40px;
     --asideWidth: 90px;
     --text-color: rgb(230,230,230);
     --shade: rgb(17,15,15);
-    --layer0 : rgb(31,24,24);
-    --layer1: rgb(56,49,47);
+    --layer0 : rgb(32, 27, 27);
+    --layer1: rgb(20, 12, 12);
     --layer2: rgb(97,88,82);
     --highlight: rgb(231,215,180);
+
+    --blue: rgb(56, 80, 90);
+    --lightblue: rgb(90, 128, 133);
 }
 
 * {
@@ -30,6 +34,10 @@ h3 {
     font-size: 20px;
 }
 
+strong {
+    font-weight: bolder;
+}
+
 ul {
     list-style-type: circle;
     list-style-position:inside;
@@ -41,12 +49,31 @@ body {
     font-family: sans-serif;
 }
 
-main, aside, footer {
+main, aside, footer, nav {
     position: fixed;
 }
 
-main, aside {
+nav {
     top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navHeight);
+    background: var(--layer1);
+}
+
+nav > * {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+nav p {
+    font-size: 28px;
+    padding-left: 15px;
+}
+
+main, aside {
+    top: var(--navHeight);
     bottom: var(--footerHeight);
 }
 
@@ -79,25 +106,36 @@ aside a {
 footer {
     bottom: 0;
     left: 0;
+    height: var(--footerHeight);
+    background: var(--layer1);
     width: 100%;
     text-align:center;
     z-index:0;
 }
 
-footer .center {
+footer p {
     position: relative;
-    z-index: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 
 .active-tab {
     background: var(--layer2);
 }
 
+.clean-blue {
+    background: var(--blue);
+    color: rgb(230,230,230);
+    border-color: white;
+}
+
+.clean-blue .active-tab {
+    background: var(--lightblue);
+}
+
 #themes-button {
-    position: absolute;
-    transform: translateX(-50%);
-    bottom: 30px;
-    left: 50%;
+    right: 15px;
 }
 
 input[type=checkbox] {
@@ -110,18 +148,23 @@ input[type=checkbox] {
 .check-button {
     cursor: pointer;
     display: block;
-    color: var(--highlight);
-    background: var(--layer0);
+    filter: invert(1);
+    /* color: var(--text-color);
+    background: var(--lightblue); */
     padding: 8px 12px;
     transition: .15s;
-    border: var(--highlight) solid 2px;
-    border-radius: 18px;
-    box-shadow: -3px 3px var(--highlight);
+    /* border: var(--blue) solid 2px;
+    border-radius: 18px; */
+    /* box-shadow: 3px 3px var(--blue); */
+}
+
+.check-button img {
+    width: 30px;
 }
 
 input[type=checkbox]:checked +.check-button {
-    background: var(--layer2);
-    color: white;
+    filter: invert(0);
+    
 }
 
 /* PREFAB POSITIONING CLASSES */

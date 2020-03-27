@@ -4,24 +4,26 @@ const path = require("path");
 
 function About(props) {
     let portrait = path.join(__dirname, "images/self-portrait.jpg");
-    
+    console.log(props.groovy);
     return(
         <div id = "about">
-            <h1 id = "logo">Hunter Wilkins</h1>
+            {/* <h1 id = "logo">Hunter Wilkins</h1> */}
 
             <section id = "bio">
-                <figure id = "portrait">
-                    <img src = {portrait} />
-                </figure>
-
-                <article>
+                <section id = {props.groovy ? "summary" : "summary-clean"}>
+                    <figure id = "portrait">
+                        <img src = {portrait} />
+                    </figure>
+                    
                     <p>
-                        Hunter Wilkins is an artist, writer, singer, musician, and programmer.
+                        <strong>Hunter Wilkins</strong> is an artist, writer, singer, musician, and programmer.
                         With over nine years of experience in Adobe Photoshop and a certificate from the
                         Coding Bootcamp at UT Austin, he's excited to get started in the wonderful world of web development!
                     </p>
-                    <br></br>
-                    <p>He has extensive experience with...</p>
+                </section>
+                <br></br>
+                <article class = {props.groovy ? "" : "clean-blue"}>
+                    {/* <p>He has extensive experience with...</p>
                     <ul>
                         <li>HTML, CSS, JavaScript, JQuery</li>
                         <li>MongoDB, Mongoose</li>
@@ -30,16 +32,16 @@ function About(props) {
                         <li>React.js</li>
                         <li>And more!</li>
                     </ul>
-                    <br></br>
+                    <br></br> */}
                     <p>If you wish to commission Hunter Wilkins for artwork or a website, contact him at <em>wilkins.hunter@gmail.com</em>.</p>
                 </article>
 
             </section>
             <br />
-            <div id = "tabs">
-                    <a href = "https://github.com/HunterWilkins" target = "blank">GitHub</a>
-                    <a href = "/images/Hunter Wilkins Resume.pdf" target = "blank">Resume</a>
-                    <a href = "https://www.linkedin.com/in/hunter-wilkins-591047117/" target = "blank">LinkedIn</a>
+            <div id = "tabs" className = {props.groovy ? "" : "clean-links"}>
+                <a href = "https://github.com/HunterWilkins" target = "blank">GitHub</a>
+                <a href = "/images/Hunter Wilkins Resume.pdf" target = "blank">Resume</a>
+                <a href = "https://www.linkedin.com/in/hunter-wilkins-591047117/" target = "blank">LinkedIn</a>
             </div>
                         
         </div>

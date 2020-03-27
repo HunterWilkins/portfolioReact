@@ -13,19 +13,13 @@ function Artwork(props) {
         display: props.fullscreen ? "block" : "none",
     }
 
-    function hideImage() {
-        style =  {
-         display: "none"
-        }
-    }
-
     return (
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
               
                 <img src = {props.image}  alt = "fullscreen image"/ >
             </figure>
-            <h1>Artwork</h1>
+
             <div id = "gallery">
                 { props.genre !== "all" ? 
                 

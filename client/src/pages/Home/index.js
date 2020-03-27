@@ -3,7 +3,7 @@ import "./style.css";
 import About from "../../components/About/index";
 import {Link} from "react-router-dom";
 import Artwork from "../../components/Artwork/index";
-import Code from "../Code/index";
+import Code from "../../components/Code/index";
 
 const axios = require("axios");
 
@@ -31,8 +31,8 @@ class Home extends Component {
     changeTheme = () => {
         const groovyTheme = {
             "--shade": "rgb(17,15,15)",
-            "--layer0": "rgb(31,24,24)",
-            "--layer1": "rgb(56,49,47)",
+            "--layer0": "rgb(32, 27, 27)",
+            "--layer1": "rgb(20, 12, 12)",
             "--layer2": "rgb(97, 88, 82)",
             "--highlight": "rgb(231, 215, 180)",
             "--text-color": "rgb(230,230,230)"
@@ -41,8 +41,8 @@ class Home extends Component {
         const cleanTheme = {
             "--text-color": "rgb(36, 36, 36)",
             "--shade": "rgb(255, 255, 255)",
-            "--layer0" : "rgb(255, 255, 255)",
-            "--layer1": "rgb(228, 228, 228)",
+            "--layer0" : "rgb(228,228,228",
+            "--layer1": "rgb(255, 255, 255)",
             "--layer2": "rgb(190, 190, 190)",
             "--highlight": "rgb(0, 0, 0)",
         }
@@ -101,8 +101,8 @@ class Home extends Component {
         let currentPage;
         
         switch(this.state.page) {
-            case "about":
-                currentPage = <About />
+            case "":
+                currentPage = <About groovy = {this.state.groovy}/>
                 break;
             case "artwork":
                 currentPage = <Artwork fullscreen = {this.state.fullscreen} 
@@ -113,25 +113,40 @@ class Home extends Component {
                                 />
                 break;
             case "code":
-                currentPage = <Code />
+                currentPage = <Code groovy = {this.state.groovy}/>
                 break;
             default:
+                currentPage = <About groovy = {this.state.groovy}/>
+                break;
         }
 
         return (
             <div>
-                <aside>
+                <nav className = {this.state.groovy ? "" : "clean-blue"}>
+                    <p>Hunter Wilkins</p>
+                    <div id = "themes-button">
+                        <input id = "theme" type = "checkbox"></input>
+                        <label className = "check-button" for = "theme" onClick = {this.changeTheme}>
+                            <img src = "images/lightbulb-icon.png"></img>
+                        </label>
+                    </div>
+                </nav>
+                <aside className = {this.state.groovy ? "" : "clean-blue"}>
                     {pages.map(item => {
-                        return(
-                            <Link to = {"/" + item.toLowerCase()} className = {this.state.page === item.toLowerCase() ? "active-tab" : ""} onClick = {() => {this.route(item.toLowerCase())}}>{item}</Link>
-                        )    
+                        if (item !== "About") {
+                            return(
+                                <Link to = {"/" + item.toLowerCase()} className = {this.state.page === item.toLowerCase() ? "active-tab" : ""} onClick = {() => {this.route(item.toLowerCase())}}>{item}</Link>
+                            )        
+                        }
+                        else {
+                            return (
+                                <Link to = {"/"} className = {this.state.page === "" || this.state.page === "about" ? "active-tab" : ""} onClick = {() => {this.route("")}}>{item}</Link>
+                            )
+                        }
                     })}
 
                     {/* <button onClick = {this.renameArt}>Rename</button> */}
-                    <div id = "themes-button">
-                        <input id = "theme" type = "checkbox"></input>
-                        <label className = "check-button" for = "theme" onClick = {this.changeTheme}>{this.state.groovy ? "Groovy" : "Clean"}</label>
-                    </div>
+                    
                 </aside>
                 
                 <main>
@@ -142,8 +157,8 @@ class Home extends Component {
                     
                 </main>
 
-                <footer>
-                    <p className = "center">wilkins.hunter@gmail.com</p>
+                <footer className = {this.state.groovy ? "" : "clean-blue"}>
+                    <p>wilkins.hunter@gmail.com</p>
                 </footer>
             </div>
         )
