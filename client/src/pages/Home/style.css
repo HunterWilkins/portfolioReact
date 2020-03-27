@@ -217,11 +217,9 @@ input[type=checkbox]:checked +.check-button {
     }
 
     aside a {
-        
         display: inline-block;
         width: 33%;
         height: 100%;
-        
         text-align:center;
     }
 

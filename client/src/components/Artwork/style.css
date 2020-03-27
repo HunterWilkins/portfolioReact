@@ -27,6 +27,7 @@
     bottom: 0;
     right: 0;
     text-align:center;
+    -webkit-overflow-scrolling: touch;
 }
 
 .genre {
