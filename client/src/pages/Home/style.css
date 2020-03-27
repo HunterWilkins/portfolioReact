@@ -138,6 +138,10 @@ footer p {
     right: 15px;
 }
 
+.invert {
+    filter: invert(1);
+}
+
 input[type=checkbox] {
     display:block;
     opacity:0;
@@ -148,7 +152,7 @@ input[type=checkbox] {
 .check-button {
     cursor: pointer;
     display: block;
-    filter: invert(1);
+    filter: invert(0);
     /* color: var(--text-color);
     background: var(--lightblue); */
     padding: 8px 12px;
@@ -162,10 +166,10 @@ input[type=checkbox] {
     width: 30px;
 }
 
-input[type=checkbox]:checked +.check-button {
-    filter: invert(0);
+/* input[type=checkbox]:checked +.check-button {
+    filter: invert(1);
     
-}
+} */
 
 /* PREFAB POSITIONING CLASSES */
 .top, .right, .bottom, .left, .center-y, .center-x, .center {

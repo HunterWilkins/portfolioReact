@@ -25,10 +25,19 @@ class Home extends Component {
 
     componentDidMount = () => {
         console.log(this.state);
+
+        let date = new Date();
+        let currentHour = date.getHours();
+
+        if (currentHour >= 21) {
+            this.changeTheme(false);
+        }
+        console.log(currentHour);
+
         this.getArt();
     }
 
-    changeTheme = () => {
+    changeTheme = (theme) => {
         const groovyTheme = {
             "--shade": "rgb(17,15,15)",
             "--layer0": "rgb(32, 27, 27)",
@@ -47,9 +56,19 @@ class Home extends Component {
             "--highlight": "rgb(0, 0, 0)",
         }
         
-        this.setState({
-            groovy: !this.state.groovy
-        });
+        if (theme.length > 0) {
+            console.log("Theme...");
+            this.setState({
+                groovy: theme
+            });
+        }
+        
+        else {
+            console.log("Automated Theme");
+            this.setState({
+                groovy: !this.state.groovy
+            });    
+        }
 
         if (this.state.groovy === false) {
             for (var x in groovyTheme) {
@@ -126,7 +145,7 @@ class Home extends Component {
                     <p>Hunter Wilkins</p>
                     <div id = "themes-button">
                         <input id = "theme" type = "checkbox"></input>
-                        <label className = "check-button" for = "theme" onClick = {this.changeTheme}>
+                        <label className = {this.state.groovy ? "check-button invert" : "check-button"} for = "theme" onClick = {this.changeTheme}>
                             <img src = "images/lightbulb-icon.png"></img>
                         </label>
                     </div>
