@@ -117,3 +117,9 @@
         top: initial;
     }
 }
+
+@media only sccreen and (max-width: 450px) {
+    #bio, #bio-clean {
+        margin-top: 15px;
+    }
+}
