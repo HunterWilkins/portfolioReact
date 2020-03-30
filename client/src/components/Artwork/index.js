@@ -10,14 +10,27 @@ function Artwork(props) {
     console.log(props);
 
     let style = {
-        display: props.fullscreen ? "block" : "none",
+        display: props.fullscreen ? "block" : "none"
     }
+
+    let imageStyle = {
+        opacity: "0"
+    }
+
+    function animateImage() {
+        imageStyle = {
+            opacity: "1"
+        }
+    }
+
+    console.log(props.image.split("/"));
 
     return (
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
               
                 <img src = {props.image}  alt = "fullscreen image"/ >
+                <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
             </figure>
 
             <div id = "gallery">

@@ -105,7 +105,7 @@ class Home extends Component {
     fullScreen = (imageName, display) => {
         this.setState({
             fullscreen: display,
-            image: imageName
+            image: imageName === "null" ? this.state.image : imageName,
         });
     }
 
