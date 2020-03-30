@@ -94,7 +94,6 @@ class Home extends Component {
 
     getArt = () => {
         axios.post("/api/artwork", {genre: "all", fileName: ""}).then((response) => {
-            console.log(response);
             this.setState({
                 artwork: response.data
             })
