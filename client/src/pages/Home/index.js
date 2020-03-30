@@ -32,6 +32,9 @@ class Home extends Component {
         if (currentHour >= 21) {
             this.changeTheme(false);
         }
+        else {
+            this.changeTheme(true);
+        }
         console.log(currentHour);
 
         this.getArt();

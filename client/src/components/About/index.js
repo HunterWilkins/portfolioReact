@@ -22,6 +22,12 @@ function About(props) {
                     </p>
                 </section>
                 <br></br>
+                <div id = "tabs" className = {props.groovy ? "" : "clean-links"}>
+                    <a href = "https://github.com/HunterWilkins" target = "blank">GitHub</a>
+                    <a href = "/images/Hunter Wilkins Resume.pdf" target = "blank">Resume</a>
+                    <a href = "https://www.linkedin.com/in/hunter-wilkins-591047117/" target = "blank">LinkedIn</a>
+                </div>
+                <br></br>
                 <article class = {props.groovy ? "" : "clean-blue"}>
                     {/* <p>He has extensive experience with...</p>
                     <ul>
@@ -38,11 +44,8 @@ function About(props) {
 
             </section>
             <br />
-            <div id = "tabs" className = {props.groovy ? "" : "clean-links"}>
-                <a href = "https://github.com/HunterWilkins" target = "blank">GitHub</a>
-                <a href = "/images/Hunter Wilkins Resume.pdf" target = "blank">Resume</a>
-                <a href = "https://www.linkedin.com/in/hunter-wilkins-591047117/" target = "blank">LinkedIn</a>
-            </div>
+            
+            <br></br><br></br>
                         
         </div>
     )
