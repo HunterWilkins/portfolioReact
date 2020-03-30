@@ -24,18 +24,17 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.state);
-
         let date = new Date();
         let currentHour = date.getHours();
 
+        // Changes theme to dark mode if it's past 9:00pm (currently irrelevant)
         if (currentHour >= 21) {
             this.changeTheme(false);
         }
         else {
             this.changeTheme(true);
         }
-        console.log(currentHour);
+
 
         this.getArt();
     }
@@ -59,15 +58,13 @@ class Home extends Component {
             "--highlight": "rgb(0, 0, 0)",
         }
         
-        if (theme.length > 0) {
-            console.log("Theme...");
+        if (theme.length > 0) { //clicked lightbulb
             this.setState({
                 groovy: theme
             });
         }
         
-        else {
-            console.log("Automated Theme");
+        else { //automated
             this.setState({
                 groovy: !this.state.groovy
             });    
@@ -86,8 +83,9 @@ class Home extends Component {
         }
     }
 
-    route = (destination) => {
-        console.log(destination);
+    route = (destination) => { 
+        //Handlebars-esque routing, using this component as the "main" view,
+        //accomplished by "mocking" html routes
         this.setState({
             page: destination
         });

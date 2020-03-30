@@ -4,7 +4,6 @@ const path = require("path");
 
 function About(props) {
     let portrait = path.join(__dirname, "images/self-portrait.jpg");
-    console.log(props.groovy);
     return(
         <div id = "about">
             {/* <h1 id = "logo">Hunter Wilkins</h1> */}

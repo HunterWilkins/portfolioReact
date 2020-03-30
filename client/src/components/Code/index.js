@@ -44,8 +44,6 @@ function Code(props) {
         color : "rgb(230,230,230)"
     }
 
-    console.log(codeCards);
-
     return (
         <div id = "code">
             {codeCards.map(item => {

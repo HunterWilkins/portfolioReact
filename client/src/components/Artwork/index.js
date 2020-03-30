@@ -6,8 +6,9 @@ const path = require("path");
 const axios = require("axios");
 
 function Artwork(props) {
-    
-    console.log(props);
+    // No matter what component is loaded, the artwork is found in the background.
+    // This ensures that the api call doesn't need to be called every time the
+    // Artwork route is called.
 
     let style = {
         display: props.fullscreen ? "block" : "none"
@@ -23,18 +24,15 @@ function Artwork(props) {
         }
     }
 
-    console.log(props.image.split("/"));
-
     return (
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
-              
                 <img src = {props.image}  alt = "fullscreen image"/ >
                 <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
             </figure>
 
             <div id = "gallery">
-                { props.genre !== "all" ? 
+                { props.genre !== "all" ? // Genre filter setup, currently will never match up. Will be expanded in future versions.
                 
                 props.artwork[props.genre].map(image => {
                     let name = image.replace(/=|-Thumbnail|.jpg|.png/g, " ");
@@ -54,9 +52,7 @@ function Artwork(props) {
                         <hr></hr>
                         <div>
                         {genre.array.map(image => {
-                            let name = image.replace(/=|-Thumbnail|.jpg|.png/g, " ");
-                            console.log(name);
-                            console.log(genre.name);
+                            let name = image.replace(/=|-Thumbnail|.jpg|.png/g, " "); // Cleans up file names
                             let imagePath = "/images/Artwork/" + genre.name +"/thumbnails/" + image;
                             let fullsizePath = "/images/Artwork/" + genre.name +"/full-size/" + image.replace(/-Thumbnail/g, "");
                             return (
