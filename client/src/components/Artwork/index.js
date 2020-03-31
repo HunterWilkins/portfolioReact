@@ -14,7 +14,7 @@ function Artwork(props) {
     return (
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
-                <img src = {props.image}  alt = {props.image.split("/")[5].replace(/=|.jpg|.png/g, " ")}/ >
+                <img src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
                 <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
             </figure>
 
