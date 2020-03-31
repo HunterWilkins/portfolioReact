@@ -1,9 +1,5 @@
-import React, {Component} from "react";
+import React from "react";
 import "./style.css";
-
-const path = require("path");
-
-const axios = require("axios");
 
 function Artwork(props) {
     // No matter what component is loaded, the artwork is found in the background.
@@ -14,20 +10,11 @@ function Artwork(props) {
         display: props.fullscreen ? "block" : "none"
     }
 
-    let imageStyle = {
-        opacity: "0"
-    }
-
-    function animateImage() {
-        imageStyle = {
-            opacity: "1"
-        }
-    }
 
     return (
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
-                <img src = {props.image}  alt = "fullscreen image"/ >
+                <img src = {props.image}  alt = {props.image.split("/")[5].replace(/=|.jpg|.png/g, " ")}/ >
                 <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
             </figure>
 

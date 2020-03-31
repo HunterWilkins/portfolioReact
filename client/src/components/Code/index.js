@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import "./style.css";
 
 function Code(props) {
@@ -48,16 +48,16 @@ function Code(props) {
         <div id = "code">
             {codeCards.map(item => {
                 return(
-                    <div className = "card" style = {props.groovy ? {} : cleanstyle}>
+                    <div key = {"CodePage" + item.title + codeCards.indexOf(item) + ""}className = "card" style = {props.groovy ? {} : cleanstyle}>
                         <p className = "title">{item.title}</p>
                         <br></br>
                         <a href = {item.href} target = "blank">
-                            <img className = "project-link" src = {item.img}></img>
+                            <img className = "project-link" src = {item.img} alt = "Project"></img>
                         </a>
                         <br />
                         <p className = "description">{item.desc}</p>
                         <a href = {item.github} target = "blank">
-                            <img className = "github-link" src = "images/code/github-icon.png"></img>
+                            <img className = "github-link" src = "images/code/github-icon.png" alt = "Github"></img>
                         </a>
                     </div>
                 )

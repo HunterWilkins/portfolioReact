@@ -11,7 +11,7 @@ function About(props) {
             <section id = "bio">
                 <section id = {props.groovy ? "summary" : "summary-clean"}>
                     <figure id = "portrait">
-                        <img src = {portrait} />
+                        <img src = {portrait} alt = "Me"/>
                     </figure>
                     
                     <p>
@@ -27,7 +27,7 @@ function About(props) {
                     <a href = "https://www.linkedin.com/in/hunter-wilkins-591047117/" target = "blank">LinkedIn</a>
                 </div>
                 <br></br>
-                <article class = {props.groovy ? "" : "clean-blue"}>
+                <article className = {props.groovy ? "" : "clean-blue"}>
                     {/* <p>He has extensive experience with...</p>
                     <ul>
                         <li>HTML, CSS, JavaScript, JQuery</li>

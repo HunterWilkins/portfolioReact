@@ -26,13 +26,12 @@ class Home extends Component {
     componentDidMount = () => {
         let date = new Date();
         let currentHour = date.getHours();
-
         // Changes theme to dark mode if it's past 9:00pm (currently irrelevant)
         if (currentHour >= 21) {
-            this.changeTheme(false);
+            this.changeTheme(true);
         }
         else {
-            this.changeTheme(true);
+            this.changeTheme(false);
         }
 
 
@@ -77,8 +76,8 @@ class Home extends Component {
         }
 
         else {
-            for (var x in cleanTheme) {
-                document.documentElement.style.setProperty(x, cleanTheme[x]);
+            for (var y in cleanTheme) {
+                document.documentElement.style.setProperty(y, cleanTheme[y]);
             }
         }
     }
@@ -145,8 +144,8 @@ class Home extends Component {
                     <p>Hunter Wilkins</p>
                     <div id = "themes-button">
                         <input id = "theme" type = "checkbox"></input>
-                        <label className = {this.state.groovy ? "check-button invert" : "check-button"} for = "theme" onClick = {this.changeTheme}>
-                            <img src = "images/lightbulb-icon.png"></img>
+                        <label className = {this.state.groovy ? "check-button invert" : "check-button"} htmlFor = "theme" onClick = {this.changeTheme}>
+                            <img src = "images/lightbulb-icon.png" alt = "Theme (Light or Dark)"></img>
                         </label>
                     </div>
                 </nav>
@@ -154,12 +153,12 @@ class Home extends Component {
                     {pages.map(item => {
                         if (item !== "About") {
                             return(
-                                <Link to = {"/" + item.toLowerCase()} className = {this.state.page === item.toLowerCase() ? "active-tab" : ""} onClick = {() => {this.route(item.toLowerCase())}}>{item}</Link>
+                                <Link key = {"Home" + item + ""} to = {"/" + item.toLowerCase()} className = {this.state.page === item.toLowerCase() ? "active-tab" : ""} onClick = {() => {this.route(item.toLowerCase())}}>{item}</Link>
                             )        
                         }
                         else {
                             return (
-                                <Link to = {"/"} className = {this.state.page === "" || this.state.page === "about" ? "active-tab" : ""} onClick = {() => {this.route("")}}>{item}</Link>
+                                <Link key = {"Home" + item + ""} to = {"/"} className = {this.state.page === "" || this.state.page === "about" ? "active-tab" : ""} onClick = {() => {this.route("")}}>{item}</Link>
                             )
                         }
                     })}
