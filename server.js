@@ -80,6 +80,18 @@ app.get("/api/art/:name", function(req, res) {
         });
        
     });
+});
+
+app.get("/api/documents", function(req, res) {
+    console.log(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
+    res.send(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
+});
+
+app.get("/api/document/:name", function(req, res) {
+    fs.readFile(path.join(__dirname, "/client/public/documents/" + req.params.name), "utf8", function(err, data) {
+        console.log(data);
+        res.send(data);
+    })
 })
 
 app.get("*", function(req, res) {

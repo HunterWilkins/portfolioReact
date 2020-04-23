@@ -4,6 +4,7 @@ import About from "../../components/About/index";
 import {Link} from "react-router-dom";
 import Artwork from "../../components/Artwork/index";
 import Code from "../../components/Code/index";
+import Blog from "../../components/Blog/index";
 
 const axios = require("axios");
 
@@ -27,12 +28,12 @@ class Home extends Component {
         let date = new Date();
         let currentHour = date.getHours();
         // Changes theme to dark mode if it's past 9:00pm (currently irrelevant)
-        if (currentHour >= 21) {
-            this.changeTheme(true);
-        }
-        else {
-            this.changeTheme(false);
-        }
+        // if (currentHour >= 21) {
+        //     this.changeTheme(true);
+        // }
+        // else {
+        //     this.changeTheme(false);
+        // }
 
 
         this.getArt();
@@ -130,6 +131,9 @@ class Home extends Component {
                                 showFullScreen = {this.fullScreen}
                                 />
                 break;
+            // case "blog":
+            //     currentPage = <Blog />
+            //     break;
             case "code":
                 currentPage = <Code groovy = {this.state.groovy}/>
                 break;
