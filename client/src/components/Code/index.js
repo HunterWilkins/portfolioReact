@@ -36,6 +36,14 @@ function Code(props) {
             desc: "The Premier Spot for MEMES and DIVISIVE POLITICAL DISCOURSE!",
             project: false
         },
+        {
+            href : "https://rootbuyerremastered.herokuapp.com",
+            github: "https://github.com/HunterWilkins/RootBuyerRemastered",
+            title: "RootBuyer Remastered",
+            img: "images/code/RootBuyer.png",
+            desc: "An Unofficial Remastering of RootBuyer.com, using React.js",
+            project: false
+        },
 
     ];
 
