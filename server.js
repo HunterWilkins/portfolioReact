@@ -12,54 +12,55 @@ app.use(express.static("public"));
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/client/build")));
 }
+// Renaming Functionality (previous iterations thought that spaces wouldn't work with image routes)
+// app.get("/api/rename/:specs", function(req, res) {
+//     if (req.params.specs === "equals") {
+//         let allFolders = ["Concept", "Hostage Situation", "Miscellaneous", "Romance"];
+//         allFolders.forEach(item => {
+//             fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"), function(err, files) {
+//                 files.forEach(file => {
+//                     let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file);
+//                     let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file.replace(/ /g, "="));
+//                     fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+//                 })
+//             });
 
-app.get("/api/rename/:specs", function(req, res) {
-    if (req.params.specs === "equals") {
-        let allFolders = ["Concept", "Hostage Situation", "Miscellaneous", "Romance"];
-        allFolders.forEach(item => {
-            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"), function(err, files) {
-                files.forEach(file => {
-                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file);
-                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file.replace(/ /g, "="));
-                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
-                })
-            });
+//             fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size"), function(err, files) {
+//                 files.forEach(file => {
+//                     let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file);
+//                     let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file.replace(/ /g, "="));
+//                     fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+//                 })
+//             });
+//         })
+//     }
 
-            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size"), function(err, files) {
-                files.forEach(file => {
-                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file);
-                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file.replace(/ /g, "="));
-                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
-                })
-            });
-        })
-    }
+//     else if (req.params.specs === "normal") {
+//         let allFolders = ["Concept", "Hostage Situation", "Miscellaneous", "Romance"];
+//         allFolders.forEach(item => {
+//             fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"), function(err, files) {
+//                 files.forEach(file => {
+//                     let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file);
+//                     let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file.replace(/=/g, " "));
+//                     console.log(newFileName);
+//                     fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+//                 })
+//             });
 
-    else if (req.params.specs === "normal") {
-        let allFolders = ["Concept", "Hostage Situation", "Miscellaneous", "Romance"];
-        allFolders.forEach(item => {
-            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"), function(err, files) {
-                files.forEach(file => {
-                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file);
-                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file.replace(/=/g, " "));
-                    console.log(newFileName);
-                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
-                })
-            });
+//             fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size"), function(err, files) {
+//                 files.forEach(file => {
+//                     let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file);
+//                     let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file.replace(/=/g, " "));
+//                     console.log(newFileName);
+//                     fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+//                 });
+//             });
+//         })
+//     }
 
-            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size"), function(err, files) {
-                files.forEach(file => {
-                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file);
-                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file.replace(/=/g, " "));
-                    console.log(newFileName);
-                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
-                });
-            });
-        })
-    }
-
-    res.sendStatus(200);
-})
+//     res.sendStatus(200);
+// })
+// =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
 
 app.post("/api/artwork", function(req, res) {
     console.log("Routing =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=");
@@ -107,17 +108,19 @@ app.get("/api/art/:name", function(req, res) {
     });
 });
 
-app.get("/api/documents", function(req, res) {
-    console.log(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
-    res.send(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
-});
+//Post Functionality Tests (Unfinished)
+// app.get("/api/documents", function(req, res) {
+//     console.log(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
+//     res.send(fs.readdirSync(path.join(__dirname, "/client/public/documents")));
+// });
 
-app.get("/api/document/:name", function(req, res) {
-    fs.readFile(path.join(__dirname, "/client/public/documents/" + req.params.name), "utf8", function(err, data) {
-        console.log(data);
-        res.send(data);
-    })
-})
+// app.get("/api/document/:name", function(req, res) {
+//     fs.readFile(path.join(__dirname, "/client/public/documents/" + req.params.name), "utf8", function(err, data) {
+//         console.log(data);
+//         res.send(data);
+//     })
+// })
+// =/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/=/
 
 app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "/client/build", "index.html"));  
