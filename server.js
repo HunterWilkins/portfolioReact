@@ -34,6 +34,31 @@ app.get("/api/rename/:specs", function(req, res) {
             });
         })
     }
+
+    else if (req.params.specs === "normal") {
+        let allFolders = ["Concept", "Hostage Situation", "Miscellaneous", "Romance"];
+        allFolders.forEach(item => {
+            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails"), function(err, files) {
+                files.forEach(file => {
+                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file);
+                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/thumbnails/" + file.replace(/=/g, " "));
+                    console.log(newFileName);
+                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+                })
+            });
+
+            fs.readdir(path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size"), function(err, files) {
+                files.forEach(file => {
+                    let oldFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file);
+                    let newFileName = path.join(__dirname, "/client/public/images/Artwork/" + item + "/full-size/" + file.replace(/=/g, " "));
+                    console.log(newFileName);
+                    fs.rename(oldFileName, newFileName, (err) => {console.log(err)}); 
+                });
+            });
+        })
+    }
+
+    res.sendStatus(200);
 })
 
 app.post("/api/artwork", function(req, res) {
