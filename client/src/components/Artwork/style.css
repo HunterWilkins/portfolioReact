@@ -1,3 +1,9 @@
+.description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 #fullscreen {
     display: none;
     position: fixed;

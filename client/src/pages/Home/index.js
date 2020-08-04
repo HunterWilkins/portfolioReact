@@ -103,10 +103,31 @@ class Home extends Component {
     }
 
     fullScreen = (imageName, display) => {
-        this.setState({
-            fullscreen: display,
-            image: imageName === "null" ? this.state.image : imageName,
-        });
+        let description;
+        if (display === true) {
+            console.log(imageName.split("/")[5].replace(/=|.jpg|.png/g, " "));
+            axios.get("/api/description/" + imageName.split("/")[5].replace(/=|.jpg|.png/g, " ")).then((response) => {
+                console.log(response.data);
+                this.setState({
+                    fullscreen: display,
+                    image: imageName === "null" ? this.state.image : imageName,
+                    description: response.data !== "" ? response.data : null
+                });
+            }).catch(err => {
+                console.log(err);
+                this.setState({
+                    fullscreen: display,
+                    image: imageName === "null" ? this.state.image : imageName,
+                });
+            });    
+        }
+
+        else {
+            this.setState({
+                fullscreen: display,
+                image: imageName === "null" ? this.state.image : imageName,
+            });
+        }
     }
 
     renameArt = () => {
@@ -129,6 +150,7 @@ class Home extends Component {
                                 genre = {this.state.artGenre} 
                                 artwork = {this.state.artwork}
                                 showFullScreen = {this.fullScreen}
+                                description = {this.state.description}
                                 />
                 break;
             // case "blog":
