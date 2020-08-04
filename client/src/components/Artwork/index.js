@@ -16,7 +16,10 @@ function Artwork(props) {
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
                 <img src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
                 <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
-                <p className = "description">{props.description}</p>
+                {
+                    props.description !== "" ?  <p className = "description">{props.description}</p> :null
+
+                }
             </figure>
 
             <div id = "gallery">

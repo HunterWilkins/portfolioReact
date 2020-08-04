@@ -111,7 +111,7 @@ class Home extends Component {
                 this.setState({
                     fullscreen: display,
                     image: imageName === "null" ? this.state.image : imageName,
-                    description: response.data !== "" ? response.data : null
+                    description: response.data
                 });
             }).catch(err => {
                 console.log(err);
