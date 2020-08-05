@@ -22,7 +22,7 @@ class Home extends Component {
             image: "",
             fullscreen: false,
             descriptionShown: false,
-            isMobile: window.outerWidth > 700
+            isMobile: window.outerWidth < 700
         }
     }
 
