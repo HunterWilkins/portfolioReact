@@ -5,6 +5,15 @@ function Artwork(props) {
     // No matter what component is loaded, the artwork is found in the background.
     // This ensures that the api call doesn't need to be called every time the
     // Artwork route is called.
+    let descriptionBoxStyle = {
+        // "top" : "100%",
+        "bottom" : "-50px",
+    }
+
+    let descriptionBoxVisible = {
+        // "top" : "initial",
+        "bottom" : "0px",
+    }
 
     let style = {
         display: props.fullscreen ? "block" : "none"
@@ -15,9 +24,20 @@ function Artwork(props) {
         <div>
             <figure id = "fullscreen" onClick = {() => {props.showFullScreen("null", false)}} style = {style}>
                 <img src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
-                <p>{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
+                <p id = "art-title">{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
+                {props.description !== "" ? <p id = "toggle-description"  style = {props.descriptionShown ? {"opacity" : "0"} : {"opacity" : "1"}} onMouseOver = {() => props.showDescription()}>Description</p> : null}
+                
                 {
-                    props.description !== "" ?  <p className = "description">{props.description}</p> :null
+                    props.description !== "" ? 
+                     
+                    <div id = "description-box" style = {props.descriptionShown ? {"opacity" : "1"} : {"opacity" : "0"}} onMouseLeave = { props.descriptionShown ? () => props.showDescription() : ""}>
+                        <p className = "art-description">{props.description}</p> 
+
+                    </div>
+                    
+                    :
+                    
+                    null
 
                 }
             </figure>

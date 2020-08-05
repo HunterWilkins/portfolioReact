@@ -20,7 +20,8 @@ class Home extends Component {
             artGenre: "all",
             groovy: true,
             image: "",
-            fullscreen: false
+            fullscreen: false,
+            descriptionShown: false
         }
     }
 
@@ -130,10 +131,12 @@ class Home extends Component {
         }
     }
 
-    renameArt = () => {
-        axios.get("/api/rename/equals", (response) => {
-            console.log(response)
+    showDescription = () => {
+        console.log("Activating ShowDescription");
+        this.setState({
+            descriptionShown: !this.state.descriptionShown
         });
+        console.log(this.state.descriptionShown);
     }
 
     render() {
@@ -151,6 +154,8 @@ class Home extends Component {
                                 artwork = {this.state.artwork}
                                 showFullScreen = {this.fullScreen}
                                 description = {this.state.description}
+                                descriptionShown = {this.state.descriptionShown}
+                                showDescription = {this.showDescription}
                                 />
                 break;
             // case "blog":

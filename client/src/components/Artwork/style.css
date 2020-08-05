@@ -1,7 +1,26 @@
-.description {
+#description-box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: .15s;
+}
+
+.art-description {
+    width: 700px;
+    margin: 0 auto;
+}
+
+#toggle-description {
+    cursor:pointer;
     position: absolute;
     bottom: 0;
-    left: 0;
+    transform: translateX(-50%);
+    left: 50%;
+    background: rgb(0,0,0, .80);
+    padding: 15px 25px;
+    z-index: 20;
+
+    transition: .15s;
 }
 
 #fullscreen {
@@ -28,9 +47,10 @@
     z-index: -1;
 }
 
-#fullscreen p {
+#art-title, #description-box {
     background: rgb(0,0,0, .80);
     z-index: 15;
+    width: 100%;
     padding: 15px;
 }
 
