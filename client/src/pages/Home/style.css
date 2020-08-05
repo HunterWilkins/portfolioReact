@@ -63,9 +63,8 @@ nav {
 
 nav > * {
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     top: 50%;
-    left: 50%;
 }
 
 nav p {
@@ -226,6 +225,11 @@ input[type=checkbox] {
         width: 33%;
         height: 100%;
         text-align:center;
+    }
+
+    nav > * {
+        transform: translate(-50%, -50%);
+        left: 50%;
     }
 
     footer {
