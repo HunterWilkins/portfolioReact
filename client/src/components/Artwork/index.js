@@ -22,19 +22,19 @@ function Artwork(props) {
     console.log(props.description);
     return (
         <div>
-            <figure id = "fullscreen" onClick = { !isMobile ? () => {props.showFullScreen("null", false)} : ""} style = {style}>
-                <img onClick = {isMobile ? () => {props.showFullScreen("null", false)} : ""} src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
+            <figure id = "fullscreen" onClick = { !props.isMobile ? () => {props.showFullScreen("null", false)} : ""} style = {style}>
+                <img onClick = {props.isMobile ? () => {props.showFullScreen("null", false)} : ""} src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
                 <p id = "art-title">{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
                 {props.description !== "" ? <p id = "toggle-description"  style = {props.descriptionShown ? {"opacity" : "0"} : {"opacity" : "1"}} 
-                    onMouseOver = {!isMobile ? () => props.showDescription() : ""} onClick = {isMobile ? () => props.showDescription() : ""}>Description</p> : null}
+                    onMouseOver = {!props.isMobile ? () => props.showDescription() : ""} onClick = {props.isMobile ? () => props.showDescription() : ""}>Description</p> : null}
                 
                 {
                     props.description !== "" ? 
                      
                     <div id = "description-box" style = {props.descriptionShown ? {"opacity" : "1"} : {"opacity" : "0"}} 
                         
-                        onMouseLeave = {props.descriptionShown && !isMobile ? () => props.showDescription() : ""}
-                        onClick = {props.descriptionShown && isMobile ? () => props.showDescription() : ""}
+                        onMouseLeave = {props.descriptionShown && !props.isMobile ? () => props.showDescription() : ""}
+                        onClick = {props.descriptionShown && props.isMobile ? () => props.showDescription() : ""}
                         >
                             <p className = "art-description">{props.description}</p> 
 

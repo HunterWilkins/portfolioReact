@@ -157,6 +157,7 @@ class Home extends Component {
                                 description = {this.state.description}
                                 descriptionShown = {this.state.descriptionShown}
                                 showDescription = {this.showDescription}
+                                isMobile = {this.state.isMobile}
                                 />
                 break;
             // case "blog":
