@@ -173,12 +173,12 @@ class Home extends Component {
             <div>
                 <nav className = {this.state.groovy ? "" : "clean-blue"}>
                     <p>Hunter Wilkins</p>
-                    <div id = "themes-button">
+                    {/* <div id = "themes-button">
                         <input id = "theme" type = "checkbox"></input>
                         <label className = {this.state.groovy ? "check-button invert" : "check-button"} htmlFor = "theme" onClick = {this.changeTheme}>
                             <img src = "images/lightbulb-icon.png" alt = "Theme (Light or Dark)"></img>
                         </label>
-                    </div>
+                    </div> */}
                 </nav>
                 <aside className = {this.state.groovy ? "" : "clean-blue"}>
                     {pages.map(item => {
