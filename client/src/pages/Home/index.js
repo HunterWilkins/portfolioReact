@@ -105,7 +105,6 @@ class Home extends Component {
     }
 
     fullScreen = (imageName, display) => {
-        let description;
         if (display === true) {
             console.log(imageName.split("/")[5].replace(/=|.jpg|.png/g, " "));
             axios.get("/api/description/" + imageName.split("/")[5].replace(/=|.jpg|.png/g, " ")).then((response) => {
@@ -128,16 +127,15 @@ class Home extends Component {
             this.setState({
                 fullscreen: display,
                 image: imageName === "null" ? this.state.image : imageName,
+                descriptionShown: false
             });
         }
     }
 
-    showDescription = () => {
-        console.log("Activating ShowDescription");
+    showDescription = (show) => {
         this.setState({
-            descriptionShown: !this.state.descriptionShown
+            descriptionShown: show
         });
-        console.log(this.state.descriptionShown);
     }
 
     render() {

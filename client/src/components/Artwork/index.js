@@ -26,15 +26,15 @@ function Artwork(props) {
                 <img onClick = {props.isMobile ? () => {props.showFullScreen("null", false)} : ""} src = {props.image}  alt = {props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : "null"}/ >
                 <p id = "art-title">{props.image ? props.image.split("/")[5].replace(/=|.jpg|.png/g, " ") : ""}</p>
                 {props.description !== "" ? <p id = "toggle-description"  style = {props.descriptionShown ? {"opacity" : "0"} : {"opacity" : "1"}} 
-                    onMouseOver = {!props.isMobile ? () => props.showDescription() : ""} onClick = {props.isMobile ? () => props.showDescription() : ""}>Description</p> : null}
+                    onMouseOver = {!props.isMobile ? () => props.showDescription(true) : ""} onClick = {props.isMobile ? () => props.showDescription(true) : ""}>Description</p> : null}
                 
                 {
                     props.description !== "" ? 
                      
                     <div id = "description-box" style = {props.descriptionShown ? {"opacity" : "1"} : {"opacity" : "0"}} 
                         
-                        onMouseLeave = {props.descriptionShown && !props.isMobile ? () => props.showDescription() : ""}
-                        onClick = {props.descriptionShown && props.isMobile ? () => props.showDescription() : ""}
+                        onMouseLeave = {props.descriptionShown && !props.isMobile ? () => props.showDescription(false) : ""}
+                        onClick = {props.descriptionShown && props.isMobile ? () => props.showDescription(false) : ""}
                         >
                             <p className = "art-description">{props.description}</p> 
 
