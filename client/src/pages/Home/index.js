@@ -21,7 +21,8 @@ class Home extends Component {
             groovy: true,
             image: "",
             fullscreen: false,
-            descriptionShown: false
+            descriptionShown: false,
+            isMobile: window.outerWidth > 700
         }
     }
 
